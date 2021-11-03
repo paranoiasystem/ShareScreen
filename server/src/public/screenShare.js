@@ -41,3 +41,8 @@ inviteButton.addEventListener("click", (e) => {
     `${window.location.hostname}/mirror/${ROOM_ID}`
   );
 });
+
+window.addEventListener("beforeunload", function() {
+  console.log("Close web socket");
+  socket.close();
+});

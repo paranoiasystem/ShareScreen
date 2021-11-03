@@ -25,3 +25,8 @@ const addVideoStream = (video, stream) => {
     video.play(); 
     screenVideo.append(video);
 };
+
+window.addEventListener("beforeunload", function() {
+  console.log("Close web socket");
+  socket.close();
+});

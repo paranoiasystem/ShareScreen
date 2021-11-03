@@ -41,10 +41,10 @@ export class Server {
     this.app.get("/", async (req, res) => {
       try {
         const roomId = uuidv4();
-        const brokerConn = await amqp.connect(`amqp://${process.env.RABBIT_USER}:${process.env.RABBIT_PASS}@${process.env.RABBIT_HOSTNAME}:5672`);
-        const channel = await brokerConn.createChannel();
-        channel.assertQueue('room', { durable: false });
-        channel.sendToQueue('room', Buffer.from(roomId));
+        // const brokerConn = await amqp.connect(`amqp://${process.env.RABBIT_USER}:${process.env.RABBIT_PASS}@${process.env.RABBIT_HOSTNAME}:5672`);
+        // const channel = await brokerConn.createChannel();
+        // channel.assertQueue('room', { durable: false });
+        // channel.sendToQueue('room', Buffer.from(roomId));
         res.render("cast", { roomId: roomId, userId: uuidv4() });
       } catch(e: any) {
         throw new Error(e.message)
