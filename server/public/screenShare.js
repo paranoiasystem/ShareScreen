@@ -2,11 +2,7 @@ const socket = io("/");
 const startScreenShareBtn = document.getElementById("startScreenShare");
 const myVideo = document.createElement("video");
 
-var peer = new Peer(undefined, {
-  path: "/peerjs",
-  host: "/",
-  port: "443",
-});
+var peer = new Peer();
 
 startScreenShareBtn.addEventListener("click", () => {
   navigator.mediaDevices

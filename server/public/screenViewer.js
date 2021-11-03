@@ -1,11 +1,7 @@
 const socket = io("/");
 const screenVideo = document.getElementById("screen-video");
 
-var peer = new Peer(undefined, {
-  path: "/peerjs",
-  host: "/",
-  port: "443",
-});
+var peer = new Peer();
 
 peer.on("call", (call) => {
   call.answer();
