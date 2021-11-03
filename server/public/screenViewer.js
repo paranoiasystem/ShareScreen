@@ -19,6 +19,7 @@ const addVideoStream = (video, stream) => {
     video.srcObject = stream;
     video.muted = true;  
     video.play(); 
+    video.requestFullscreen();
     screenVideo.append(video);
 };
 
