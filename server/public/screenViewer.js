@@ -18,10 +18,24 @@ peer.on("open", (id) => {
 const addVideoStream = (video, stream) => {
     video.srcObject = stream;
     video.muted = true;  
-    video.play(); 
-    document.documentElement.requestFullscreen();
+    video.play();
+    requestFullScreen(document.body);
     screenVideo.append(video);
 };
+
+function requestFullScreen(element) {
+  // Supports most browsers and their versions.
+  var requestMethod = element.requestFullScreen || element.webkitRequestFullScreen || element.mozRequestFullScreen || element.msRequestFullScreen;
+
+  if (requestMethod) { // Native full screen.
+      requestMethod.call(element);
+  } else if (typeof window.ActiveXObject !== "undefined") { // Older IE.
+      var wscript = new ActiveXObject("WScript.Shell");
+      if (wscript !== null) {
+          wscript.SendKeys("{F11}");
+      }
+  }
+}
 
 window.addEventListener("beforeunload", function() {
   console.log("Close web socket");
