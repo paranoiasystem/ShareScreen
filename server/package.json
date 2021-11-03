@@ -1,32 +1,22 @@
 {
-  "name": "server_sharescreen",
+  "name": "server2",
   "version": "1.0.0",
-  "description": "Sharescreen Server",
-  "main": "index.ts",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc",
-    "build": "rm -rf ./build && npm run tsc && cp -R ./src/public ./build/public && cp -R ./src/views ./build/views && cp -R ./.env ./build/.env",
-    "start": "node build/index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
-  "author": "ParanoiaSystem",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "amqplib": "^0.8.0",
-    "dotenv": "^10.0.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
-    "peer": "0.6.1",
-    "socket.io": "4.1.3",
+    "peer": "^0.6.1",
+    "socket.io": "^4.3.1",
     "uuid": "^8.3.2"
-  },
-  "devDependencies": {
-    "@types/amqplib": "^0.8.2",
-    "@types/express": "^4.17.13",
-    "@types/socket.io": "^3.0.2",
-    "@types/uuid": "^8.3.1",
-    "nodemon": "^2.0.14",
-    "ts-node": "^10.4.0",
-    "typescript": "^4.4.4"
+  }, "devDependencies": {
+    "nodemon": "^2.0.14"
   }
 }
