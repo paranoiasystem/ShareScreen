@@ -11,10 +11,8 @@ services:
     ports:
       - '5000:5000'
     command: >
-      bash -c "npm install -g npm@latest
-      && cd /server
+      cd /server
       && npm i
-      && npm run build
       && npm start"
     volumes:
       - './server:/server'
