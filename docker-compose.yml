@@ -9,9 +9,10 @@ services:
     container_name: server_sharescreen
     restart: unless-stopped
     ports:
-      - '5000:5000'
+      - '3000:3000'
     command: >
-      cd /server
+      bash -c "npm install -g npm@latest
+      && cd /server
       && npm i
       && npm start"
     volumes:
