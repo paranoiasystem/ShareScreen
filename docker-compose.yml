@@ -14,7 +14,7 @@ services:
       bash -c "npm install -g npm@latest
       && cd /server
       && npm i
-      && npm start"
+      && npm run dev"
     volumes:
       - './server:/server'
     networks:
@@ -34,20 +34,20 @@ services:
   #   networks:
   #     - sharescreen
   
-  # rabbitmq:
-  #   image: 'rabbitmq:3-management'
-  #   container_name: rabbitmq_sharescreen
-  #   restart: unless-stopped
-  #   user: root
-  #   hostname: rabbit
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: roomrabbit
-  #     RABBITMQ_DEFAULT_PASS: fr4g0l0n3
-  #     RABBITMQ_DEFAULT_VHOST: /
-  #   ports:
-  #     - '5672:5672'
-  #     - '15672:15672'
-  #   volumes:
-  #     - './rabbitdata:/var/lib/rabbitmq'
-  #   networks:
-  #     - sharescreen
+  rabbitmq:
+    image: 'rabbitmq:3-management'
+    container_name: rabbitmq_sharescreen
+    restart: unless-stopped
+    user: root
+    hostname: rabbit
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_DEFAULT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_DEFAULT_PASS}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_DEFAULT_VHOST}
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    volumes:
+      - './rabbitdata:/var/lib/rabbitmq'
+    networks:
+      - sharescreen
